@@ -56,17 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/title_bar" />
 
-    <ImageButton
-        android:id="@+id/loadBtn6"
-        android:layout_width="192dp"
-        android:layout_height="111dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/loadtxt6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/title_bar" />
-
     <TextView
         android:id="@+id/loadtxt4"
         android:layout_width="150dp"
@@ -93,18 +82,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/loadtxt6"
-        android:layout_width="150dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Memory 6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/loadtxt2"
@@ -155,4 +132,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loadtxt1"
         app:srcCompat="@android:drawable/title_bar" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

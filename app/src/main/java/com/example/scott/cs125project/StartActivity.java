@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -13,6 +14,14 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        TextView language = findViewById(R.id.languageTextView);
+        if (getIntent().hasExtra("language")) {
+            if (getIntent().getExtras().getBoolean("language")) {
+                language.setText("English");
+            } else {
+                language.setText("中文");
+            }
+        }
         Button startBtn = (Button) findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
