@@ -8,7 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class StartActivity extends AppCompatActivity {
-
+    /** english is 0, chinese is 1. */
+    private int langu = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,21 +17,23 @@ public class StartActivity extends AppCompatActivity {
 
         TextView language = findViewById(R.id.languageTextView);
         if (getIntent().hasExtra("language")) {
-            if (getIntent().getExtras().getBoolean("language")) {
-                language.setText("English");
-            } else {
-                language.setText("中文");
-            }
+            langu = getIntent().getExtras().getInt("language");
         }
-        Button startBtn = (Button) findViewById(R.id.startBtn);
+        if (langu == 0) {
+            language.setText("English");
+        } else {
+            language.setText("中文");
+        }
+        Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                main.putExtra("language", langu);
                 startActivity(main);
             }
         });
-        Button loadBtn = (Button) findViewById(R.id.loadBtn);
+        Button loadBtn = findViewById(R.id.loadBtn0);
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,20 +41,20 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(load);
             }
         });
-        Button settingBtn = (Button) findViewById(R.id.settingBtn);
+        Button settingBtn = findViewById(R.id.settingBtn);
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
+                setting.putExtra("language", langu);
                 startActivity(setting);
             }
         });
-        Button exitBtn = (Button) findViewById(R.id.exitBtn);
-        exitBtn.setOnClickListener(new View.OnClickListener() {
+        Button creditBtn = findViewById(R.id.creditBtn);
+        creditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                System.exit(0);
+
             }
         });
     }

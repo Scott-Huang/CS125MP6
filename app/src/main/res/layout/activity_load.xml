@@ -37,7 +37,7 @@
         android:layout_height="111dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/loadtxt4"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/title_bar" />
@@ -123,7 +123,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/loadBtn1"
+        android:id="@+id/loadBtn0"
         android:layout_width="192dp"
         android:layout_height="111dp"
         android:layout_marginStart="30dp"

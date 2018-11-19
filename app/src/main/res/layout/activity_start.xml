@@ -7,15 +7,15 @@
     tools:context=".StartActivity">
 
     <Button
-        android:id="@+id/exitBtn"
+        android:id="@+id/creditBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
         android:layout_marginBottom="50dp"
         android:background="@android:color/transparent"
-        android:text="exit"
+        android:text="Credit"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,10 +32,10 @@
         android:text="setting"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loadBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loadBtn0" />
 
     <Button
-        android:id="@+id/loadBtn"
+        android:id="@+id/loadBtn0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

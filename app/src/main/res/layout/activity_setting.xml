@@ -65,7 +65,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="16dp"
-        android:text="Chinese"
+        android:text="中文"
         app:layout_constraintStart_toEndOf="@+id/englishTx"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
