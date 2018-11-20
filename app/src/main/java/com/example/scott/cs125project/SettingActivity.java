@@ -33,6 +33,7 @@ public class SettingActivity extends AppCompatActivity {
                 } else {
                     Intent main = new Intent(getApplicationContext(), MainActivity.class);
                     main.putExtra("language", language.getProgress());
+                    main.putExtra("plot", getIntent().getExtras().getInt("plot"));
                     startActivity(main);
                 }
             }

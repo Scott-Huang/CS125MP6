@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     /* english is 0, chinese is 1.*/
     private int language = 0;
+    private static int plot = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +19,17 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("language")) {
             language = getIntent().getExtras().getInt("language");
         }
+        if (getIntent().hasExtra("plot")) {
+            plot = getIntent().getExtras().getInt("plot");
+        }
 
         Button saveBtn = findViewById(R.id.saveBtn1);
         Button loadBtn = findViewById(R.id.loadBtn0);
         Button settingBtn = findViewById(R.id.setBtn);
         Button titleBtn = findViewById(R.id.startBtn1);
         TextView textTextView = findViewById(R.id.textTextView);
+
+        textTextView.setTextSize(22);
 
         titleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent save = new Intent(getApplicationContext(), LoadActivity.class);
-                save.putExtra("save", 0);
+                save.putExtra("save", plot);
                 startActivity(save);
             }
         });
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
                 setting.putExtra("setting", language);
+                setting.putExtra("plot", plot);
                 startActivity(setting);
             }
         });

@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class LoadActivity extends AppCompatActivity {
-    private static boolean fromStart = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +17,7 @@ public class LoadActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /* we may need it since there may be some bugs in the future.
                 if (getIntent().hasExtra("save") || getIntent().hasExtra("load")) {
                     Intent main = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(main);
@@ -25,6 +25,9 @@ public class LoadActivity extends AppCompatActivity {
                     Intent start = new Intent(getApplicationContext(), StartActivity.class);
                     startActivity(start);
                 }
+                */
+                finish();
+                System.exit(0);
             }
         });
         ImageButton loadBtn1 = findViewById(R.id.loadBtn0);
