@@ -16,6 +16,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         TextView language = findViewById(R.id.languageTextView);
+        language.setTextSize(20);
         if (getIntent().hasExtra("language")) {
             langu = getIntent().getExtras().getInt("language");
         }

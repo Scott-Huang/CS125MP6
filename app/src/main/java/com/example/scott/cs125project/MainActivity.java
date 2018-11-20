@@ -32,5 +32,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(title);
             }
         });
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent save = new Intent(getApplicationContext(), LoadActivity.class);
+                save.putExtra("save", 0);
+                startActivity(save);
+            }
+        });
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent load = new Intent(getApplicationContext(), LoadActivity.class);
+                load.putExtra("load", true);
+                startActivity(load);
+            }
+        });
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
+                setting.putExtra("setting", language);
+                startActivity(setting);
+            }
+        });
     }
 }
