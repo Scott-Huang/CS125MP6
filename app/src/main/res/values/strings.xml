@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CS125 Project</string>
+
+    <string-array name="scripts">
+        <item>@string/plot0</item>
+        <item>@string/plot1</item>
+        <item>@string/plot2</item>
+    </string-array>
+
+    <string name="plot0">something 0</string>
+    <string name="plot1">something 1</string>
+    <string name="plot2">something 2</string>
 </resources>

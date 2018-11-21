@@ -35,5 +35,14 @@ public class LoadActivity extends AppCompatActivity {
         ImageButton loadBtn3 = findViewById(R.id.loadBtn3);
         ImageButton loadBtn4 = findViewById(R.id.loadBtn4);
         ImageButton loadBtn5 = findViewById(R.id.loadBtn5);
+
+        loadBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent load1 = new Intent(getApplicationContext(), MainActivity.class);
+                load1.putExtra("plot", 1);
+                startActivity(load1);
+            }
+        });
     }
 }
