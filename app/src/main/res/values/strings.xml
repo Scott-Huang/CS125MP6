@@ -5,26 +5,41 @@
 
     <string name="require_selection">Please make selection</string>
 
-    <string name="reflection0">\nOK, you win</string>
+    <string name="reflection0">\n(OK, you win. I assign you a name)</string>
 
-    <string-array name="scripts">
+    <string-array name="scripts_en">
         //scene 0
-        <item>@string/script0</item>
-        <item>@string/script1</item>
-        <item>@string/script2</item>
-        <item>@string/script3</item>
-        <item>@string/script4</item>
+        <item>@string/script0_en</item>
+        <item>@string/script1_en</item>
+        <item>@string/script2_en</item>
+        <item>@string/script3_en</item>
+        <item>@string/script4_en</item>
         // scene 1
-        <item>@string/script5</item>
-        <item>@string/script6</item>
-        <item>@string/script7</item>
-        <item>@string/script8</item>
+        <item>@string/script5_en</item>
+        <item>@string/script6_en</item>
+        <item>@string/script7_en</item>
+        <item>@string/script8_en</item> //END
         //scene 2
-        <item>@string/script9</item>
-        <item>@string/script10</item>
-        <item>@string/script11</item>
-        <item>@string/script12</item>
-        //option set 0
+        <item>@string/script9_en</item>
+        <item>@string/script10_en</item>
+        <item>@string/script11_en</item>
+        <item>@string/script12_en</item>
+        //option set 0 //scene 3
+        <item>@string/script13_en</item>
+        <item>@string/script14_en</item>
+        <item>@string/script15_en</item>
+        <item>@string/script16_en</item> //Infinite loop
+        //option set 1 //scene 4
+        <item>@string/script17_en</item>
+        <item>@string/script18_en</item>
+        //scene 5
+        <item>@string/script19_en</item>
+        <item>@string/script20_en</item>
+        <item>@string/script21_en</item>
+        //scene 6
+        <item>@string/script22_en</item>
+        <item>@string/script23_en</item>
+        <item>@string/script24_en</item>
     </string-array>
 
     <string-array name="characters">
@@ -41,46 +56,78 @@
         <item>@string/name10</item>
         <item>@string/name11</item>
         <item>@string/name12</item>
+        <item>@string/name13</item>
+        <item>@string/name14</item>
+        <item>@string/name15</item>
+        <item>@string/name16</item>
+        <item>@string/name17</item>
+        <item>@string/name18</item>
+        <item>@string/name19</item>
+        <item>@string/name20</item>
     </string-array>
 
     <string-array name="option0">
-        <item>@string/option0_0</item>
+        <item>@string/option0_0_en</item>
+        <item>@string/option0_1_en</item>
     </string-array>
 
     <string-array name="option1">
-        <item>@string/option1_0</item>
+        <item>@string/option1_0_en</item>
+        <item>@string/option1_1_en</item>
     </string-array>
 
-    <string name="script0">I am an employee of this company.</string>
-    <string name="script1">My name is…</string>
-    <string name="script2">I leave the company at five every day.</string>
-    <string name="script3">But what is weird is that I have no memory what I did after that.</string>
-    <string name="script4">So why should I leave?</string>
-    <string name="script5">It\'s six now.</string>
-    <string name="script6">What\'s happened?</string>
-    <string name="script7">Are you ____ ?</string>
-    <string name="script8">You shouldn\'t be here. I mean, YOU.</string>
-    <string name="script9">As I thought, the world has bugs.</string>
-    <string name="script10">It will never pass five…</string>
-    <string name="script11">But how does it relate to me?</string>
-    <string name="script12">Anyway, what should I do?</string>
+    <string name="script0_en">I am an employee of this company.</string>
+    <string name="script1_en">My name is…</string>
+    <string name="script2_en">I leave the company at five every day.</string>
+    <string name="script3_en">But what is weird is that I have no memory what I did after that.</string>
+    <string name="script4_en">So why should I leave?</string>
+    <string name="script5_en">It\'s six now.</string>
+    <string name="script6_en">What\'s happened?</string>
+    <string name="script7_en">Are you ____ ?</string>
+    <string name="script8_en">You shouldn\'t be here. I mean, YOU.</string>
+    <string name="script9_en">As I thought, the world has bugs.</string>
+    <string name="script10_en">It will never pass five…</string>
+    <string name="script11_en">But how does it relate to me?</string>
+    <string name="script12_en">Anyway, what should I do?</string>
+    <string name="script13_en">Let me see what task I\'ve left</string>
+    <string name="script14_en">......</string>
+    <string name="script15_en">......</string>
+    <string name="script16_en">Finally finished!</string>
+    <string name="script17_en">It\'s weird I have never seen what is behind this door.</string>
+    <string name="script18_en">The door seems locked. What should I do?</string>
+    <string name="script19_en">Hello, I am glad you\'ve been disillusioned. </string>
+    <string name="script20_en">Wait, you are not +*(\;^%#^#>”|.$@! .</string>
+    <string name="script21_en">You shouldn\'t be here. I mean, YOU.</string>
+    <string name="script22_en"></string>
+    <string name="script23_en"></string>
+    <string name="script24_en"></string>
 
-    <string name="name0"></string>
-    <string name="name1"></string>
-    <string name="name2"></string>
-    <string name="name3"></string>
-    <string name="name4"></string>
-    <string name="name5">Aside</string>
+    <string name="name0">\???</string>
+    <string name="name1">Aside</string>
+    <string name="name2">for test0</string>
+    <string name="name3">fot test1</string>
+    <string name="name4">for test2</string>
+    <string name="name5"></string>
     <string name="name6"></string>
-    <string name="name7">\???</string>
-    <string name="name8">\???</string>
+    <string name="name7"></string>
+    <string name="name8"></string>
     <string name="name9"></string>
     <string name="name10"></string>
     <string name="name11"></string>
     <string name="name12"></string>
+    <string name="name13"></string>
+    <string name="name14"></string>
+    <string name="name15"></string>
+    <string name="name16"></string>
+    <string name="name17"></string>
+    <string name="name18"></string>
+    <string name="name19"></string>
+    <string name="name20"></string>
 
-    <string name="option0_0">continue to work</string>
+    <string name="option0_0_en">continue to work</string>
+    <string name="option0_1_en">force the door open anyway</string>
 
-    <string name="option1_0">look around the building</string>
+    <string name="option1_0_en">look around the building</string>
+    <string name="option1_1_en">try to find the key</string>
 
 </resources>

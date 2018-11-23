@@ -26,21 +26,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] scripts = getResources().getStringArray(R.array.scripts);
+        final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
+        final String[] scripts_cn;
         final String[] characters = getResources().getStringArray(R.array.characters);
         final String[] choice1 = getResources().getStringArray(R.array.option0);
         final String[] choice2 = getResources().getStringArray(R.array.option1);
+
+        final List conditions = new ArrayList<Boolean>();
+
         final Intent title = new Intent(getApplicationContext(), StartActivity.class);
+        final Intent save = new Intent(getApplicationContext(), LoadActivity.class);
+        final Intent load = new Intent(getApplicationContext(), LoadActivity.class);
+        final Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
+
         final Button saveBtn = findViewById(R.id.saveBtn1);
         final Button loadBtn = findViewById(R.id.loadBtn0);
         final Button settingBtn = findViewById(R.id.setBtn);
         final Button titleBtn = findViewById(R.id.startBtn1);
         final Button choiceBtn1 = findViewById(R.id.choiceBtn1);
         final Button choiceBtn2 = findViewById(R.id.choiceBtn2);
+
         final ConstraintLayout layout = findViewById(R.id.layout);
+
         final TextView textTextView = findViewById(R.id.textTextView);
         final TextView nameTextView = findViewById(R.id.nameTextView);
         final TextView name = findViewById(R.id.nameTextViewDisplay);
+
         final EditText nameEditText = findViewById(R.id.nameEditText);
 
         if (getIntent().hasExtra("language")) {
@@ -49,13 +60,11 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("plot")) {
             plot = getIntent().getExtras().getInt("plot");
         }
-
-        final List conditions = new ArrayList<Boolean>();
+        if (getIntent().hasExtra("option")) {
+            option = getIntent().getExtras().getInt("option");
+        }
 
         textTextView.setTextSize(textSize);
-        if (plot < scripts.length) {
-            textTextView.setText(scripts[plot]);
-        }
 
         titleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent save = new Intent(getApplicationContext(), LoadActivity.class);
                 save.putExtra("save", plot);
                 startActivity(save);
             }
@@ -74,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent load = new Intent(getApplicationContext(), LoadActivity.class);
                 load.putExtra("load", true);
                 startActivity(load);
             }
@@ -82,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
                 setting.putExtra("setting", language);
                 setting.putExtra("plot", plot);
                 startActivity(setting);
@@ -93,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 conditions.add(true);
                 selected = true;
-                choiceBtn1.setVisibility(View.INVISIBLE);
-                choiceBtn2.setVisibility(View.INVISIBLE);
+                Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
             }
         });
@@ -103,78 +108,71 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 conditions.add(false);
                 selected = true;
-                choiceBtn1.setVisibility(View.INVISIBLE);
-                choiceBtn2.setVisibility(View.INVISIBLE);
+                Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
             }
         });
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                 plot++;
-                if (plot < scripts.length) {
-                    textTextView.setText(scripts[plot]);
-                    /* delay the display time
-                    try {
-                        Thread.sleep(1000); //1000 milliseconds is one second.
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                    */
-                }
-                if (plot < characters.length) {
-                    if (characters[plot].equals("")) {
-                        nameTextView.setText(names);
-                    } else {
-                        nameTextView.setText(characters[plot]);
-                    }
-                }
-                if (plot == 1) {
-                    nameEditText.setVisibility(View.VISIBLE);
-                    name.setVisibility(View.VISIBLE);
-                } else if (plot == 2) {
+                if (plot == 2) {
+                    Helper.setVisibility(true, name,nameEditText);
+                } else if (plot == 3) {
                     names = nameEditText.getText().toString();
-                    if (names.equals("") && count < 8) {
+                    if (names.equals("") && count < 5) {
                         textTextView.setText(getResources().getString(R.string.require_name) + Helper.createExc(count));
                         nameTextView.setText(names);
-                        plot = 0;
+                        plot = 2;
                         count++;
                     } else if (names.equals("")) {
-                        textTextView.setText(scripts[plot] + getResources().getString(R.string.reflection0));
-                        name.setVisibility(View.INVISIBLE);
-                        nameEditText.setVisibility(View.INVISIBLE);
+                        textTextView.setText(scripts_en[plot - 1] + getResources().getString(R.string.reflection0));
+                        Helper.setVisibility(false, name, nameEditText);
                         names = "Bland";
+                        nameTextView.setText(names);
                         count = 0;
                     } else {
-                        name.setVisibility(View.INVISIBLE);
-                        nameEditText.setVisibility(View.INVISIBLE);
+                        Helper.setVisibility(false, name, nameEditText);
                         nameTextView.setText(names);
                     }
-                } else if (plot == 8) {
+                } else if (plot == 9) {
                     //plot = 0;
                     //startActivity(title);
-                    try {
-                        Thread.sleep(1000); //1000 milliseconds is one second.
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
-                } else if (plot == 12) {
-                    choiceBtn1.setText(choice1[option]);
-                    choiceBtn1.setVisibility(View.VISIBLE);
-                    choiceBtn2.setText(choice2[option]);
-                    choiceBtn2.setVisibility(View.VISIBLE);
-                } else if (plot == 13) {
-                    if (!selected) {
+                } else if (plot == 14) {
+                    if (!selected && conditions.size() != 1) {
                         plot -= 1;
                         textTextView.setText(getResources().getString(R.string.require_selection));
-                        nameTextView.setText("");
+                        Helper.clearNameTag(nameTextView);
                     } else {
                         selected = false;
+                        if (!(boolean) conditions.get(0)) {
+                            plot = 17;
+                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
+                            plot++;
+                        }
                     }
+                } else if (plot == 20) {
+                    if (!selected && conditions.size() != 2) {
+                        plot -= 1;
+                        textTextView.setText(getResources().getString(R.string.require_selection));
+                        Helper.clearNameTag(nameTextView);
+                    } else {
+                        selected = false;
+                        if (!(boolean) conditions.get(1)) {
+                            plot = 22;
+                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
+                            plot++;
+                        }
+                    }
+                } else if (plot == 21 && (boolean) conditions.get(1)) {
+                    //plot = 0;
+                    //startActivity(title);
+                }
+                Helper.setBtn(choice1, choiceBtn1, plot, option);
+                Helper.setBtn(choice2, choiceBtn2, plot, option);
+                if (plot == 17 && (boolean) conditions.get(0)) {
+                    plot =13;
                 }
             }
         });

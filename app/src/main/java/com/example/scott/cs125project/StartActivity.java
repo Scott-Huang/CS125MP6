@@ -31,6 +31,8 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent main = new Intent(getApplicationContext(), MainActivity.class);
                 main.putExtra("language", langu);
+                main.putExtra("plot", 0);
+                main.putExtra("option", 0);
                 startActivity(main);
             }
         });

@@ -40,7 +40,6 @@ public class LoadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent load1 = new Intent(getApplicationContext(), MainActivity.class);
-                load1.putExtra("plot", 1);
                 startActivity(load1);
             }
         });
