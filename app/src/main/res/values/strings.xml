@@ -5,7 +5,7 @@
 
     <string name="require_selection">Please make selection</string>
 
-    <string name="reflection0">\n(OK, you win. I assign you a name)</string>
+    <string name="reflection0">\n(OK, you win. I assigned you a name)</string>
 
     <string-array name="scripts_en">
         //scene 0
@@ -31,7 +31,7 @@
         <item>@string/script16_en</item> //Infinite loop
         //option set 1 //scene 4
         <item>@string/script17_en</item>
-        <item>@string/script18_en</item>
+        <item>@string/script18_en</item> //END
         //scene 5
         <item>@string/script19_en</item>
         <item>@string/script20_en</item>
@@ -40,6 +40,10 @@
         <item>@string/script22_en</item>
         <item>@string/script23_en</item>
         <item>@string/script24_en</item>
+    </string-array>
+
+    <string-array name="scripts_cn">
+        <item></item>
     </string-array>
 
     <string-array name="characters">
@@ -66,14 +70,22 @@
         <item>@string/name20</item>
     </string-array>
 
-    <string-array name="option0">
+    <string-array name="option0_en">
         <item>@string/option0_0_en</item>
         <item>@string/option0_1_en</item>
     </string-array>
 
-    <string-array name="option1">
+    <string-array name="option1_en">
         <item>@string/option1_0_en</item>
         <item>@string/option1_1_en</item>
+    </string-array>
+
+    <string-array name="option0_cn">
+        <item></item>
+    </string-array>
+
+    <string-array name="option1_cn">
+        <item></item>
     </string-array>
 
     <string name="script0_en">I am an employee of this company.</string>

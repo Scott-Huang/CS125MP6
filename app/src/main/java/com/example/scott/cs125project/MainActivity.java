@@ -26,13 +26,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
-        final String[] scripts_cn;
-        final String[] characters = getResources().getStringArray(R.array.characters);
-        final String[] choice1 = getResources().getStringArray(R.array.option0);
-        final String[] choice2 = getResources().getStringArray(R.array.option1);
+        Helper helper = new Helper(this);
 
-        final List conditions = new ArrayList<Boolean>();
+        final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
+        final String[] scripts_cn = getResources().getStringArray(R.array.scripts_cn);;
+        final String[] characters = getResources().getStringArray(R.array.characters);
+        final String[] choice1_en = getResources().getStringArray(R.array.option0_en);
+        final String[] choice2_en = getResources().getStringArray(R.array.option1_en);
+        final String[] choice1_cn = getResources().getStringArray(R.array.option0_cn);
+        final String[] choice2_cn = getResources().getStringArray(R.array.option1_cn);
+
+        final List<Boolean> conditions = new ArrayList<>();
 
         final Intent title = new Intent(getApplicationContext(), StartActivity.class);
         final Intent save = new Intent(getApplicationContext(), LoadActivity.class);
@@ -63,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("option")) {
             option = getIntent().getExtras().getInt("option");
         }
+        if (getIntent().hasExtra("textSize")) {
+            textSize = getIntent().getExtras().getInt("textSize");
+        }
+        if (getIntent().hasExtra("conditions")) {
+            Helper.setCondition(conditions, getIntent().getExtras().getBooleanArray("conditions"));
+        }
 
         textTextView.setTextSize(textSize);
 
@@ -76,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 save.putExtra("save", plot);
+                save.putExtra("option", option);
+                save.putExtra("conditions", conditions.toArray());
                 startActivity(save);
             }
         });
@@ -91,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setting.putExtra("setting", language);
                 setting.putExtra("plot", plot);
+                save.putExtra("option", option);
+                save.putExtra("conditions", conditions.toArray());
                 startActivity(setting);
             }
         });
@@ -146,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         Helper.clearNameTag(nameTextView);
                     } else {
                         selected = false;
-                        if (!(boolean) conditions.get(0)) {
+                        if (!conditions.get(0)) {
                             plot = 17;
                             Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                             plot++;
@@ -159,19 +173,19 @@ public class MainActivity extends AppCompatActivity {
                         Helper.clearNameTag(nameTextView);
                     } else {
                         selected = false;
-                        if (!(boolean) conditions.get(1)) {
+                        if (!conditions.get(1)) {
                             plot = 22;
                             Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                             plot++;
                         }
                     }
-                } else if (plot == 21 && (boolean) conditions.get(1)) {
+                } else if (plot == 21 && conditions.get(1)) {
                     //plot = 0;
                     //startActivity(title);
                 }
-                Helper.setBtn(choice1, choiceBtn1, plot, option);
-                Helper.setBtn(choice2, choiceBtn2, plot, option);
-                if (plot == 17 && (boolean) conditions.get(0)) {
+                Helper.setBtn(choice1_en, choiceBtn1, plot, option);
+                Helper.setBtn(choice2_en, choiceBtn2, plot, option);
+                if (plot == 17 && conditions.get(0)) {
                     plot =13;
                 }
             }
