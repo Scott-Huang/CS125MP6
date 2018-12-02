@@ -95,8 +95,8 @@
     <string name="script4_en">So why should I leave?</string>
     <string name="script5_en">It\'s six now.</string>
     <string name="script6_en">What\'s happened?</string>
-    <string name="script7_en">Are you ____ ?</string>
-    <string name="script8_en">You shouldn\'t be here. I mean, YOU.</string>
+    <string name="script7_en">Hello#8230\n(if not click the clock in the image)</string>
+    <string name="script8_en">You shouldn\'t be here. I mean, YOU.\n(END)</string>
     <string name="script9_en">As I thought, the world has bugs.</string>
     <string name="script10_en">It will never pass five…</string>
     <string name="script11_en">But how does it relate to me?</string>
@@ -109,7 +109,7 @@
     <string name="script18_en">The door seems locked. What should I do?</string>
     <string name="script19_en">Hello, I am glad you\'ve been disillusioned. </string>
     <string name="script20_en">Wait, you are not +*(\;^%#^#>”|.$@! .</string>
-    <string name="script21_en">You shouldn\'t be here. I mean, YOU.</string>
+    <string name="script21_en">You shouldn\'t be here. I mean, YOU.\n(END)</string>
     <string name="script22_en"></string>
     <string name="script23_en"></string>
     <string name="script24_en"></string>

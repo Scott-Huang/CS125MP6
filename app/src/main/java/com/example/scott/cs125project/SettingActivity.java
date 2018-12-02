@@ -35,6 +35,7 @@ public class SettingActivity extends AppCompatActivity {
                     main.putExtra("language", language.getProgress());
                     main.putExtra("plot", getIntent().getExtras().getInt("plot"));
                     main.putExtra("option", getIntent().getExtras().getInt("option"));
+                    main.putExtra("name", getIntent().getExtras().getString("name"));
                     main.putExtra("conditions", getIntent().getExtras().getBooleanArray("conditions"));
                     startActivity(main);
                 }

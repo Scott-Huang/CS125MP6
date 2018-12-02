@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +21,15 @@ public class MainActivity extends AppCompatActivity {
     private int textSize = 24;
     private int count = 0;
     private String names = "Unknown";
-    private boolean selected = false;
+    private final String TAG = "CS125Project";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Helper helper = new Helper(this);
+        //Maybe need it later.
+        //Helper helper = new Helper(this);
 
         final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
         final String[] scripts_cn = getResources().getStringArray(R.array.scripts_cn);;
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText nameEditText = findViewById(R.id.nameEditText);
 
+        final ImageView imageView;
+
         if (getIntent().hasExtra("language")) {
             language = getIntent().getExtras().getInt("language");
         }
@@ -73,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("conditions")) {
             Helper.setCondition(conditions, getIntent().getExtras().getBooleanArray("conditions"));
         }
+        if (getIntent().hasExtra("name")) {
+            names = getIntent().getExtras().getString("name");
+            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot -= 1);
+            Log.d(TAG, "result in " + plot);
+            Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot + 1, option);
+            Log.d(TAG, "result in " + (plot + 1));
+        }
 
         textTextView.setTextSize(textSize);
 
@@ -85,9 +97,11 @@ public class MainActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save.putExtra("save", plot);
+                save.putExtra("save", true);
+                save.putExtra("plot", plot);
                 save.putExtra("option", option);
-                save.putExtra("conditions", conditions.toArray());
+                save.putExtra("name", names);
+                save.putExtra("conditions", Helper.transfer(conditions));
                 startActivity(save);
             }
         });
@@ -95,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 load.putExtra("load", true);
+                load.putExtra("plot", plot);
+                load.putExtra("option", option);
+                load.putExtra("name", names);
+                load.putExtra("conditions", Helper.transfer(conditions));
                 startActivity(load);
             }
         });
@@ -103,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setting.putExtra("setting", language);
                 setting.putExtra("plot", plot);
-                save.putExtra("option", option);
-                save.putExtra("conditions", conditions.toArray());
+                setting.putExtra("option", option);
+                setting.putExtra("name", names);
+                setting.putExtra("conditions", Helper.transfer(conditions));
                 startActivity(setting);
             }
         });
@@ -112,23 +131,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 conditions.add(true);
-                selected = true;
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
+                layout.setClickable(true);
             }
         });
         choiceBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 conditions.add(false);
-                selected = true;
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
+                layout.setClickable(true);
             }
         });
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "plot num is " + plot);
+                if (Helper.checkEnd(conditions, plot)) {
+                    Log.d(TAG, "end");
+                    //plot = 0;
+                    //startActivity(title);
+                }
                 Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                 plot++;
                 if (plot == 2) {
@@ -150,44 +175,31 @@ public class MainActivity extends AppCompatActivity {
                         Helper.setVisibility(false, name, nameEditText);
                         nameTextView.setText(names);
                     }
-                } else if (plot == 9) {
-                    //plot = 0;
-                    //startActivity(title);
-                } else if (plot == 14) {
-                    if (!selected && conditions.size() != 1) {
-                        plot -= 1;
-                        textTextView.setText(getResources().getString(R.string.require_selection));
-                        Helper.clearNameTag(nameTextView);
-                    } else {
-                        selected = false;
-                        if (!conditions.get(0)) {
+                }
+                switch (plot) {
+                    case 14:
+                        if (conditions.size() > 0 && !conditions.get(0)) {
                             plot = 17;
                             Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                             plot++;
                         }
-                    }
-                } else if (plot == 20) {
-                    if (!selected && conditions.size() != 2) {
-                        plot -= 1;
-                        textTextView.setText(getResources().getString(R.string.require_selection));
-                        Helper.clearNameTag(nameTextView);
-                    } else {
-                        selected = false;
-                        if (!conditions.get(1)) {
+                        break;
+                    case 18:
+                        if (conditions.size() > 0 && conditions.get(0)) {
+                            plot = 13;
+                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
+                            plot++;
+                        }
+                        break;
+                    case 20:
+                        if (conditions.size() > 1 && !conditions.get(1)) {
                             plot = 22;
                             Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                             plot++;
                         }
-                    }
-                } else if (plot == 21 && conditions.get(1)) {
-                    //plot = 0;
-                    //startActivity(title);
+                        break;
                 }
-                Helper.setBtn(choice1_en, choiceBtn1, plot, option);
-                Helper.setBtn(choice2_en, choiceBtn2, plot, option);
-                if (plot == 17 && conditions.get(0)) {
-                    plot =13;
-                }
+                Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
             }
         });
     }
