@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.dragankrstic.autotypetextview.AutoTypeTextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //Helper helper = new Helper(this);
 
         final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
-        final String[] scripts_cn = getResources().getStringArray(R.array.scripts_cn);;
+        final String[] scripts_cn = getResources().getStringArray(R.array.scripts_cn);
         final String[] characters = getResources().getStringArray(R.array.characters);
         final String[] choice1_en = getResources().getStringArray(R.array.option0_en);
         final String[] choice2_en = getResources().getStringArray(R.array.option1_en);
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ConstraintLayout layout = findViewById(R.id.layout);
 
-        final TextView textTextView = findViewById(R.id.textTextView);
+        final AutoTypeTextView textTextView = findViewById(R.id.textTextView);
         final TextView nameTextView = findViewById(R.id.nameTextView);
         final TextView name = findViewById(R.id.nameTextViewDisplay);
 
@@ -148,25 +151,26 @@ public class MainActivity extends AppCompatActivity {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "plot num is " + plot);
+                if (textTextView.isRunning()) {
+                    return;
+                }
                 if (Helper.checkEnd(conditions, plot)) {
                     Log.d(TAG, "end");
                     //plot = 0;
                     //startActivity(title);
                 }
-                Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
                 plot++;
                 if (plot == 2) {
                     Helper.setVisibility(true, name,nameEditText);
                 } else if (plot == 3) {
                     names = nameEditText.getText().toString();
                     if (names.equals("") && count < 5) {
-                        textTextView.setText(getResources().getString(R.string.require_name) + Helper.createExc(count));
+                        textTextView.setTextAutoTyping(getResources().getString(R.string.require_name) + Helper.createExc(count));
                         nameTextView.setText(names);
                         plot = 2;
                         count++;
                     } else if (names.equals("")) {
-                        textTextView.setText(scripts_en[plot - 1] + getResources().getString(R.string.reflection0));
+                        textTextView.setTextAutoTyping(scripts_en[plot - 1] + getResources().getString(R.string.reflection0));
                         Helper.setVisibility(false, name, nameEditText);
                         names = "Bland";
                         nameTextView.setText(names);
@@ -199,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                 }
+                Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot - 1);
                 Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
             }
         });
