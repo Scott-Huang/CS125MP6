@@ -33,9 +33,9 @@ public class LoadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (getIntent().hasExtra("save") || getIntent().hasExtra("load")) {
-                    load.putExtra("plot", getIntent().getExtras().getInt("plot"));
-                    load.putExtra("option", getIntent().getExtras().getInt("option"));
-                    load.putExtra("name", getIntent().getExtras().getString("name"));
+                    //load.putExtra("plot", getIntent().getExtras().getInt("plot"));
+                    //load.putExtra("option", getIntent().getExtras().getInt("option"));
+                    //load.putExtra("name", getIntent().getExtras().getString("name"));
                     load.putExtra("conditions", getIntent().getExtras().getBooleanArray("conditions"));
                     startActivity(load);
                 } else {

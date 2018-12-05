@@ -11,13 +11,12 @@
 
     <com.dragankrstic.autotypetextview.AutoTypeTextView
         android:id="@+id/textTextView"
-        android:layout_width="520dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="526dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginBottom="4dp"
         android:textColor="@android:color/black"
-        attv:typingSpeed="30"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

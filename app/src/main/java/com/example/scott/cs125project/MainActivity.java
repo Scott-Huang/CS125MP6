@@ -1,6 +1,7 @@
 package com.example.scott.cs125project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,9 +20,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     /* english is 0, chinese is 1.*/
     private int language = 0;
-    private static int plot = 0;
-    private static int option = 0;
-    private int textSize = 24;
+    private static int plot;
+    private static int option;
+    private int textSize;
+    private int speed;
     private int count = 0;
     private String names = "Unknown";
     private final String TAG = "CS125Project";
@@ -66,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
         final ImageView imageView;
 
+        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        plot = sharedPref.getInt("plot", 0);
+        option = sharedPref.getInt("option", 0);
+        textSize = sharedPref.getInt("textSize", 25);
+        speed = sharedPref.getInt("speed", 30);
+        names = sharedPref.getString("name", "Unknown");
+        language = sharedPref.getInt("language", 0);
+
         if (getIntent().hasExtra("language")) {
             language = getIntent().getExtras().getInt("language");
         }
@@ -75,21 +85,17 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent().hasExtra("option")) {
             option = getIntent().getExtras().getInt("option");
         }
-        if (getIntent().hasExtra("textSize")) {
-            textSize = getIntent().getExtras().getInt("textSize");
-        }
         if (getIntent().hasExtra("conditions")) {
             Helper.setCondition(conditions, getIntent().getExtras().getBooleanArray("conditions"));
         }
         if (getIntent().hasExtra("name")) {
             names = getIntent().getExtras().getString("name");
-            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot -= 1);
-            Log.d(TAG, "result in " + plot);
-            Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot + 1, option);
-            Log.d(TAG, "result in " + (plot + 1));
+            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot - 1);
+            Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
         }
 
         textTextView.setTextSize(textSize);
+        textTextView.setTypingSpeed(speed);
 
         titleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,10 +117,6 @@ public class MainActivity extends AppCompatActivity {
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                load.putExtra("load", true);
-                load.putExtra("plot", plot);
-                load.putExtra("option", option);
-                load.putExtra("name", names);
                 load.putExtra("conditions", Helper.transfer(conditions));
                 startActivity(load);
             }
@@ -122,11 +124,10 @@ public class MainActivity extends AppCompatActivity {
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setting.putExtra("setting", language);
-                setting.putExtra("plot", plot);
-                setting.putExtra("option", option);
-                setting.putExtra("name", names);
                 setting.putExtra("conditions", Helper.transfer(conditions));
+                setting.putExtra("language", language);
+                setting.putExtra("speed", speed);
+                setting.putExtra("textSize", textSize);
                 startActivity(setting);
             }
         });
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (plot == 3) {
                     names = nameEditText.getText().toString();
                     if (names.equals("") && count < 5) {
+                        Helper.setVisibility(true, name,nameEditText);
                         textTextView.setTextAutoTyping(getResources().getString(R.string.require_name) + Helper.createExc(count));
                         nameTextView.setText(names);
                         plot = 2;
@@ -207,5 +209,19 @@ public class MainActivity extends AppCompatActivity {
                 Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
             }
         });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("plot", plot);
+        editor.putInt("option", option);
+        editor.putInt("language", language);
+        editor.putInt("speed", speed);
+        editor.putInt("textSize", textSize);
+        editor.putString("name", names);
+        editor.apply();
     }
 }

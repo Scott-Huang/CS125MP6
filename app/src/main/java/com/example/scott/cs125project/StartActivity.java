@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class StartActivity extends AppCompatActivity {
     /** english is 0, chinese is 1. */
-    private int langu = 0;
+    private int langu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +17,7 @@ public class StartActivity extends AppCompatActivity {
 
         TextView language = findViewById(R.id.languageTextView);
         language.setTextSize(20);
-        if (getIntent().hasExtra("language")) {
-            langu = getIntent().getExtras().getInt("language");
-        }
+        langu = getIntent().getExtras().getInt("language", 0);
         if (langu == 0) {
             language.setText("English");
         } else {
@@ -33,6 +31,7 @@ public class StartActivity extends AppCompatActivity {
                 main.putExtra("language", langu);
                 main.putExtra("plot", 0);
                 main.putExtra("option", 0);
+                main.putExtra("conditions", new boolean[0]);
                 startActivity(main);
             }
         });

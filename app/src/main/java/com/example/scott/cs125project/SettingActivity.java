@@ -16,10 +16,14 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         final SeekBar language = findViewById(R.id.languageSeekBar);
+        final SeekBar speed = findViewById(R.id.speedSeekBar);
+        final SeekBar size = findViewById(R.id.sizeSeekBar);
         if (getIntent().hasExtra("language")) {
             language.setProgress(getIntent().getExtras().getInt("language"));
         } else if (getIntent().hasExtra("setting")) {
             language.setProgress(getIntent().getExtras().getInt("setting"));
+            speed.setProgress(4 - (getIntent().getExtras().getInt("speed") - 15) / 15);
+            size.setProgress((getIntent().getExtras().getInt("textSize") - 10) / 5);
             fromMain = true;
         }
         Button back = findViewById(R.id.backBtn1);
@@ -33,10 +37,9 @@ public class SettingActivity extends AppCompatActivity {
                 } else {
                     Intent main = new Intent(getApplicationContext(), MainActivity.class);
                     main.putExtra("language", language.getProgress());
-                    main.putExtra("plot", getIntent().getExtras().getInt("plot"));
-                    main.putExtra("option", getIntent().getExtras().getInt("option"));
-                    main.putExtra("name", getIntent().getExtras().getString("name"));
                     main.putExtra("conditions", getIntent().getExtras().getBooleanArray("conditions"));
+                    main.putExtra("textSize", size.getProgress() * 5 + 10);
+                    main.putExtra("speed", (4 - size.getProgress()) * 15 + 15);
                     startActivity(main);
                 }
             }
