@@ -205,11 +205,10 @@ public class MainActivity extends AppCompatActivity {
                             count = 0;
                         } else {
                             Helper.setVisibility(false, name, nameEditText);
-                            nameTextView.setText(names);
                             count = 0;
                         }
                         break;
-                    case 4:
+                    case 3:
                         clockBtn.setVisibility(View.VISIBLE);
                         break;
                     case 5:
@@ -237,18 +236,23 @@ public class MainActivity extends AppCompatActivity {
                             plot = 43;
                         }
                         break;
-                    case 33:
+                    case 30:
+                        if (conditions.size() != 4) {
+                            if (count < 3) {
+                                setUp(language);
+                                layout.setClickable(true);
+                                count++;
+                                return;
+                            } else {
+                                Helper.setVisibility(false, choiceBtn1, choiceBtn2);
+                                conditions.add(option, false);
+                                plot++;
+                            }
+                        }
+                        break;
+                    case 35:
                         if (conditions.size() == 4) {
                             plot = 13;
-                        } else if (count < 3) {
-                            setUp(language);
-                            layout.setClickable(true);
-                            count++;
-                            return;
-                        } else {
-                            Helper.setVisibility(false, choiceBtn1, choiceBtn2);
-                            conditions.add(option, false);
-                            plot++;
                         }
                         break;
                 }
