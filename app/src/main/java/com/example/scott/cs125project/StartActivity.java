@@ -18,7 +18,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         SharedPreferences sharedPref =
-                getSharedPreferences("myStartSettings", MODE_PRIVATE);
+                getSharedPreferences("mySettings", MODE_PRIVATE);
         langu = sharedPref.getInt("language", 0);
 
         TextView language = findViewById(R.id.languageTextView);
@@ -88,7 +88,7 @@ public class StartActivity extends AppCompatActivity {
         super.onPause();
 
         SharedPreferences sharedPreferences =
-                getSharedPreferences("myStartSettings", MODE_PRIVATE);
+                getSharedPreferences("mySettings", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("language", langu);
         editor.apply();
