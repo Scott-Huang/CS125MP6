@@ -193,10 +193,8 @@ public class MainActivity extends AppCompatActivity {
                             Helper.setVisibility(true, name,nameEditText);
                             textTextView.setTextAutoTyping(getResources().getString(R.string.require_name)
                                     + Helper.createExc(count));
-                            nameTextView.setText(names);
                             plot = 1;
                             count++;
-                            return;
                         } else if (names.equals("")) {
                             textTextView.setTextAutoTyping(scripts_en[plot]
                                     + getResources().getString(R.string.reflection0));
