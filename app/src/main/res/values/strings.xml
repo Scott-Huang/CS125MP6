@@ -28,7 +28,7 @@
         <item>@string/script13_en</item>
         <item>@string/script14_en</item>
         <item>@string/script15_en</item>
-        <item>@string/script16_en</item> //Infinite loop
+        <item>@string/script16_en</item> //Infinite loop 13-16
         //option set 1 //scene 4
         <item>@string/script17_en</item>
         <item>@string/script18_en</item> //END
@@ -40,10 +40,37 @@
         <item>@string/script22_en</item>
         <item>@string/script23_en</item>
         <item>@string/script24_en</item>
+        <item>@string/script25_en</item> //show the photo
+        <item>@string/script26_en</item>
+        <item>@string/script27_en</item>
+        <item>@string/script28_en</item>
+        <item>@string/script29_en</item>
+        <item>@string/script30_en</item>
+        //option set 2
+        <item>@string/script31_en</item>
+        <item>@string/script32_en</item>
+        <item>@string/script33_en</item>
+        <item>@string/script34_en</item> //Infinite loop -13
+        //hidden end 0
+        <item>@string/script35_en</item>
+        <item>@string/script36_en</item>
+        <item>@string/script37_en</item>
+        <item>@string/script38_en</item>
+        <item>@string/script39_en</item>
+        <item>@string/script40_en</item>
+        <item>@string/script41_en</item>
+        <item>@string/script42_en</item>
+        //scene 7
+        <item>@string/script43_en</item>
+        <item>@string/script44_en</item>
+        <item>@string/script45_en</item>
     </string-array>
 
     <string-array name="scripts_cn">
-        <item></item>
+        <item>@string/script0_cn</item>
+        <item>@string/script1_cn</item>
+        <item>@string/script2_cn</item>
+        <item>@string/script3_cn</item>
     </string-array>
 
     <string-array name="characters">
@@ -58,34 +85,30 @@
         <item>@string/name8</item>
         <item>@string/name9</item>
         <item>@string/name10</item>
-        <item>@string/name11</item>
-        <item>@string/name12</item>
-        <item>@string/name13</item>
-        <item>@string/name14</item>
-        <item>@string/name15</item>
-        <item>@string/name16</item>
-        <item>@string/name17</item>
-        <item>@string/name18</item>
-        <item>@string/name19</item>
-        <item>@string/name20</item>
     </string-array>
 
     <string-array name="option0_en">
         <item>@string/option0_0_en</item>
         <item>@string/option0_1_en</item>
+        <item>@string/option0_2_en</item>
     </string-array>
 
     <string-array name="option1_en">
         <item>@string/option1_0_en</item>
         <item>@string/option1_1_en</item>
+        <item>@string/option1_2_en</item>
     </string-array>
 
     <string-array name="option0_cn">
-        <item></item>
+        <item>@string/option0_0_cn</item>
+        <item>@string/option0_1_cn</item>
+        <item>@string/option0_2_cn</item>
     </string-array>
 
     <string-array name="option1_cn">
-        <item></item>
+        <item>@string/option1_0_cn</item>
+        <item>@string/option1_1_cn</item>
+        <item>@string/option1_2_cn</item>
     </string-array>
 
     <string name="script0_en">I am an employee of this company.</string>
@@ -95,7 +118,7 @@
     <string name="script4_en">So why should I leave?</string>
     <string name="script5_en">It\'s six now.</string>
     <string name="script6_en">What\'s happened?</string>
-    <string name="script7_en">Hello#8230\n(if not click the clock in the image)</string>
+    <string name="script7_en">Hello...</string>
     <string name="script8_en">You shouldn\'t be here. I mean, YOU.\n(END)</string>
     <string name="script9_en">As I thought, the world has bugs.</string>
     <string name="script10_en">It will never pass five…</string>
@@ -110,9 +133,39 @@
     <string name="script19_en">Hello, I am glad you\'ve been disillusioned. </string>
     <string name="script20_en">Wait, you are not +*(\;^%#^#>”|.$@! .</string>
     <string name="script21_en">You shouldn\'t be here. I mean, YOU.\n(END)</string>
-    <string name="script22_en"></string>
-    <string name="script23_en"></string>
-    <string name="script24_en"></string>
+    <string name="script22_en">You walk to someone’s desk.</string>
+    <string name="script23_en">I have never seen what are on others\' desk.</string>
+    <string name="script24_en">I don\'t know why, but this photo draws my attention.</string>
+    <string name="script25_en">Let me take a look.</string>
+    <string name="script26_en">Um......</string>
+    <string name="script27_en">......</string>
+    <string name="script28_en">I have a little impression on what this is about, but I can’t remember.</string>
+    <string name="script29_en">......</string>
+    <string name="script30_en">Why am I here? I should return to my workplace.</string>
+    <string name="script31_en">That\'s right! That\'s what I should really choose.</string>
+    <string name="script32_en">Why did I care about those things?</string>
+    <string name="script33_en">I have my job...</string>
+    <string name="script34_en">I have to work...</string>
+    <string name="script35_en">Hey...</string>
+    <string name="script36_en">Could you stop forcing me to explore those f**king puzzles?</string>
+    <string name="script37_en">It will only turn worse. I promise.</string>
+    <string name="script38_en">You could merely restart the game...</string>
+    <string name="script39_en">Or you might not, sometimes.</string>
+    <string name="script40_en">But, for me, it means the end of my existence.</string>
+    <string name="script41_en">Just leave me to work along.</string>
+    <string name="script42_en">Please.</string>
+    <string name="script43_en">You are Bland, right?</string>
+    <string name="script44_en">Yeah. And where am I?</string>
+    <string name="script45_en"></string>
+    <string name="script46_en"></string>
+    <string name="script47_en"></string>
+    <string name="script48_en"></string>
+    <string name="script49_en"></string>
+
+    <string name="script0_cn">假装这里有东西吧</string>
+    <string name="script1_cn">这里本来就有东西了嘛</string>
+    <string name="script2_cn">这不已经三行了</string>
+    <string name="script3_cn">加上这就四行了</string>
 
     <string name="name0">\???</string>
     <string name="name1">Aside</string>
@@ -125,21 +178,21 @@
     <string name="name8"></string>
     <string name="name9"></string>
     <string name="name10"></string>
-    <string name="name11"></string>
-    <string name="name12"></string>
-    <string name="name13"></string>
-    <string name="name14"></string>
-    <string name="name15"></string>
-    <string name="name16"></string>
-    <string name="name17"></string>
-    <string name="name18"></string>
-    <string name="name19"></string>
-    <string name="name20"></string>
 
     <string name="option0_0_en">continue to work</string>
     <string name="option0_1_en">force the door open anyway</string>
+    <string name="option0_2_en">go back to work</string>
 
     <string name="option1_0_en">look around the building</string>
     <string name="option1_1_en">try to find the key</string>
+    <string name="option1_2_en">go back to work</string>
+
+    <string name="option0_0_cn">继续工作</string>
+    <string name="option0_1_cn">强行把门打开</string>
+    <string name="option0_2_cn">返回工作</string>
+
+    <string name="option1_0_cn">观察四周环境</string>
+    <string name="option1_1_cn">去找钥匙</string>
+    <string name="option1_2_cn">返回工作</string>
 
 </resources>

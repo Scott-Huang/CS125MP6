@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.dragankrstic.autotypetextview.AutoTypeTextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private int textSize;
     private int speed;
     private int count = 0;
+    private boolean[] con;
     private String names = "Unknown";
     private final String TAG = "CS125Project";
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Maybe need it later.
+        //Maybe need it later, for image displaying.
         //Helper helper = new Helper(this);
 
         final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         final String[] choice2_cn = getResources().getStringArray(R.array.option1_cn);
 
         final List<Boolean> conditions = new ArrayList<>();
+        con = new boolean[0];
 
         final Intent title = new Intent(getApplicationContext(), StartActivity.class);
         final Intent save = new Intent(getApplicationContext(), LoadActivity.class);
@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
         plot = sharedPref.getInt("plot", 0);
         option = sharedPref.getInt("option", 0);
+        Helper.retrieveConditions(sharedPref, conditions, "conditions");
         textSize = sharedPref.getInt("textSize", 25);
         speed = sharedPref.getInt("speed", 30);
         names = sharedPref.getString("name", "Unknown");
@@ -86,16 +87,35 @@ public class MainActivity extends AppCompatActivity {
             option = getIntent().getExtras().getInt("option");
         }
         if (getIntent().hasExtra("conditions")) {
-            Helper.setCondition(conditions, getIntent().getExtras().getBooleanArray("conditions"));
+            Helper.setCondition(conditions, getIntent().getExtras()
+                    .getBooleanArray("conditions"));
         }
         if (getIntent().hasExtra("name")) {
             names = getIntent().getExtras().getString("name");
-            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot - 1);
-            Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
+        }
+        if (getIntent().hasExtra("speed")) {
+            speed = getIntent().getExtras().getInt("speed");
+        }
+        if (getIntent().hasExtra("textSize")) {
+            textSize = getIntent().getExtras().getInt("textSize");
         }
 
         textTextView.setTextSize(textSize);
         textTextView.setTypingSpeed(speed);
+
+        if (plot != 0) {
+            if (language == 0) {
+                Helper.setUp(scripts_en, textTextView, characters, names, nameTextView,
+                        plot - 1, false);
+                Helper.setBtn(choice1_en, choiceBtn1, choice2_en,
+                        choiceBtn2, layout, plot - 1, option);
+            } else {
+                Helper.setUp(scripts_cn, textTextView, characters, names, nameTextView,
+                        plot - 1, false);
+                Helper.setBtn(choice1_cn, choiceBtn1, choice2_en,
+                        choiceBtn2, layout, plot - 1, option);
+            }
+        }
 
         titleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,17 +137,14 @@ public class MainActivity extends AppCompatActivity {
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                load.putExtra("conditions", Helper.transfer(conditions));
+                load.putExtra("load", true);
                 startActivity(load);
             }
         });
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setting.putExtra("conditions", Helper.transfer(conditions));
-                setting.putExtra("language", language);
-                setting.putExtra("speed", speed);
-                setting.putExtra("textSize", textSize);
+                setting.putExtra("setting", true);
                 startActivity(setting);
             }
         });
@@ -135,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 conditions.add(true);
+                con = Helper.transfer(conditions);
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
                 layout.setClickable(true);
@@ -144,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 conditions.add(false);
+                con = Helper.transfer(conditions);
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
                 layout.setClickable(true);
@@ -157,56 +176,90 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (Helper.checkEnd(conditions, plot)) {
                     Log.d(TAG, "end");
-                    //plot = 0;
-                    //startActivity(title);
+                    //end();
                 }
-                plot++;
-                if (plot == 2) {
+                if (plot == 1) {
                     Helper.setVisibility(true, name,nameEditText);
-                } else if (plot == 3) {
+                } else if (plot == 2) {
                     names = nameEditText.getText().toString();
                     if (names.equals("") && count < 5) {
                         Helper.setVisibility(true, name,nameEditText);
-                        textTextView.setTextAutoTyping(getResources().getString(R.string.require_name) + Helper.createExc(count));
+                        textTextView.setTextAutoTyping(getResources().getString(R.string.require_name)
+                                + Helper.createExc(count));
                         nameTextView.setText(names);
-                        plot = 2;
+                        plot = 1;
                         count++;
+                        return;
                     } else if (names.equals("")) {
-                        textTextView.setTextAutoTyping(scripts_en[plot - 1] + getResources().getString(R.string.reflection0));
+                        textTextView.setTextAutoTyping(scripts_en[plot]
+                                + getResources().getString(R.string.reflection0));
                         Helper.setVisibility(false, name, nameEditText);
                         names = "Bland";
                         nameTextView.setText(names);
                         count = 0;
+                        return;
                     } else {
                         Helper.setVisibility(false, name, nameEditText);
                         nameTextView.setText(names);
+                        count = 0;
                     }
                 }
                 switch (plot) {
-                    case 14:
+                    case 13:
                         if (conditions.size() > 0 && !conditions.get(0)) {
                             plot = 17;
-                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
-                            plot++;
                         }
                         break;
-                    case 18:
+                    case 17:
                         if (conditions.size() > 0 && conditions.get(0)) {
                             plot = 13;
-                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
-                            plot++;
+                        }
+                        break;
+                    case 19:
+                        if (conditions.size() > 1 && !conditions.get(1)) {
+                            plot = 22;
                         }
                         break;
                     case 20:
-                        if (conditions.size() > 1 && !conditions.get(1)) {
-                            plot = 22;
-                            Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot);
+                        if (names.trim().toLowerCase().equals("bland")) {
+                            plot = 43;
+                        }
+                        break;
+                    case 30:
+                        if (conditions.size() == 3) {
+                            plot = 13;
+                        } else if (count < 3) {
+                            setUp(language);
+                            layout.setClickable(true);
+                            count++;
+                            return;
+                        } else {
+                            Helper.setVisibility(false, choiceBtn1, choiceBtn2);
+                            conditions.add(option, false);
                             plot++;
                         }
                         break;
                 }
-                Helper.setUp(scripts_en, textTextView, characters, names, nameTextView, plot - 1);
-                Helper.setBtn(choice1_en, choiceBtn1, choice2_en, choiceBtn2, layout, plot, option);
+                setUp(language);
+                plot++;
+            }
+
+            void setUp(int a) {
+                if (a == 0) {
+                    Helper.setUp(scripts_en, textTextView, characters, names,
+                            nameTextView, plot, true);
+                    Helper.setBtn(choice1_en, choiceBtn1, choice2_en,
+                            choiceBtn2, layout, plot, option);
+                } else {
+                    Helper.setUp(scripts_cn, textTextView, characters, names,
+                            nameTextView, plot, true);
+                    Helper.setBtn(choice1_cn, choiceBtn1, choice2_cn,
+                            choiceBtn2, layout, plot, option);
+                }
+            }
+            void end() {
+                plot = 0;
+                startActivity(title);
             }
         });
     }
@@ -222,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt("speed", speed);
         editor.putInt("textSize", textSize);
         editor.putString("name", names);
+        Helper.commitConditions(editor, con, "conditions");
         editor.apply();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.scott.cs125project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,22 @@ import android.widget.TextView;
 public class StartActivity extends AppCompatActivity {
     /** english is 0, chinese is 1. */
     private int langu;
+    private boolean played;
+    private final String TAG = "start activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        SharedPreferences sharedPref =
+                getSharedPreferences("myStartSettings", MODE_PRIVATE);
+        langu = sharedPref.getInt("language", 0);
+
         TextView language = findViewById(R.id.languageTextView);
         language.setTextSize(20);
-        langu = getIntent().getExtras().getInt("language", 0);
+        if (getIntent().hasExtra("language")) {
+            langu = getIntent().getExtras().getInt("language", 0);
+        }
         if (langu == 0) {
             language.setText("English");
         } else {
@@ -28,10 +37,16 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent main = new Intent(getApplicationContext(), MainActivity.class);
-                main.putExtra("language", langu);
+                if (getIntent().hasExtra("language")) {
+                    main.putExtra("language", langu);
+                    main.putExtra("speed", getIntent().getExtras().getInt("speed"));
+                    main.putExtra("textSize", getIntent()
+                            .getExtras().getInt("textSize"));
+                }
                 main.putExtra("plot", 0);
                 main.putExtra("option", 0);
                 main.putExtra("conditions", new boolean[0]);
+                main.putExtra("name", "Unknown");
                 startActivity(main);
             }
         });
@@ -48,7 +63,6 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent setting = new Intent(getApplicationContext(), SettingActivity.class);
-                setting.putExtra("language", langu);
                 startActivity(setting);
             }
         });
@@ -59,5 +73,16 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences sharedPreferences =
+                getSharedPreferences("myStartSettings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("language", langu);
+        editor.apply();
     }
 }
