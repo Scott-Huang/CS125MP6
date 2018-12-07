@@ -202,9 +202,8 @@ public class MainActivity extends AppCompatActivity {
                                     + getResources().getString(R.string.reflection0));
                             Helper.setVisibility(false, name, nameEditText);
                             names = "Bland";
-                            nameTextView.setText(names);
+                            //nameTextView.setText(names);
                             count = 0;
-                            return;
                         } else {
                             Helper.setVisibility(false, name, nameEditText);
                             nameTextView.setText(names);
@@ -217,17 +216,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case 13:
-                        if (conditions.size() > 0 && !conditions.get(0)) {
+                        if (conditions.size() > 1 && !conditions.get(1)) {
                             plot = 17;
                         }
                         break;
                     case 17:
-                        if (conditions.size() > 0 && conditions.get(0)) {
+                        if (conditions.size() > 1 && conditions.get(1)) {
                             plot = 13;
                         }
                         break;
                     case 19:
-                        if (conditions.size() > 1 && !conditions.get(1)) {
+                        if (conditions.size() > 2 && !conditions.get(2)) {
                             plot = 22;
                         }
                         break;

@@ -71,6 +71,47 @@
         <item>@string/script1_cn</item>
         <item>@string/script2_cn</item>
         <item>@string/script3_cn</item>
+        <item>@string/script4_cn</item>
+        <item>@string/script5_cn</item>
+        <item>@string/script6_cn</item>
+        <item>@string/script7_cn</item>
+        <item>@string/script8_cn</item>
+        <item>@string/script9_cn</item>
+        <item>@string/script10_cn</item>
+        <item>@string/script11_cn</item>
+        <item>@string/script12_cn</item>
+        <item>@string/script13_cn</item>
+        <item>@string/script14_cn</item>
+        <item>@string/script15_cn</item>
+        <item>@string/script16_cn</item>
+        <item>@string/script17_cn</item>
+        <item>@string/script18_cn</item>
+        <item>@string/script19_cn</item>
+        <item>@string/script20_cn</item>
+        <item>@string/script21_cn</item>
+        <item>@string/script22_cn</item>
+        <item>@string/script23_cn</item>
+        <item>@string/script24_cn</item>
+        <item>@string/script25_cn</item>
+        <item>@string/script26_cn</item>
+        <item>@string/script27_cn</item>
+        <item>@string/script28_cn</item>
+        <item>@string/script29_cn</item>
+        <item>@string/script30_cn</item>
+        <item>@string/script31_cn</item>
+        <item>@string/script32_cn</item>
+        <item>@string/script33_cn</item>
+        <item>@string/script34_cn</item>
+        <item>@string/script35_cn</item>
+        <item>@string/script36_cn</item>
+        <item>@string/script37_cn</item>
+        <item>@string/script38_cn</item>
+        <item>@string/script39_cn</item>
+        <item>@string/script40_cn</item>
+        <item>@string/script41_cn</item>
+        <item>@string/script42_cn</item>
+        <item>@string/script43_cn</item>
+        <item>@string/script44_cn</item>
     </string-array>
 
     <string-array name="characters">
@@ -134,7 +175,7 @@
     <string name="script16_en">Finally finished!</string>
     <string name="script17_en">It\'s weird I have never seen what is behind this door.</string>
     <string name="script18_en">The door seems locked. What should I do?</string>
-    <string name="script19_en">Hello, I am glad you\'ve been disillusioned. </string>
+    <string name="script19_en">Congratulations! I am glad you\'ve been disillusioned. </string>
     <string name="script20_en">Wait, you are not +*(\;^%#^#>”|.$@! .</string>
     <string name="script21_en">You shouldn\'t be here. I mean, YOU.\n(END)</string>
     <string name="script22_en">You walk to someone’s desk.</string>
@@ -153,7 +194,7 @@
     <string name="script35_en">Hey...</string>
     <string name="script36_en">Could you stop forcing me to explore those f**king puzzles?</string>
     <string name="script37_en">It will only turn worse. I promise.</string>
-    <string name="script38_en">You could merely restart the game...</string>
+    <string name="script38_en">You could merely restart the game at that time...</string>
     <string name="script39_en">Or you might not, sometimes.</string>
     <string name="script40_en">But, for me, it means the end of my existence.</string>
     <string name="script41_en">Just leave me to work along.</string>
@@ -166,10 +207,51 @@
     <string name="script48_en"></string>
     <string name="script49_en"></string>
 
-    <string name="script0_cn">假装这里有东西吧</string>
-    <string name="script1_cn">这里本来就有东西了嘛</string>
-    <string name="script2_cn">这不已经三行了</string>
-    <string name="script3_cn">加上这就四行了</string>
+    <string name="script0_cn">我是这家公司的一名职员</string>
+    <string name="script1_cn">我叫。。。</string>
+    <string name="script2_cn">这每天五点下班</string>
+    <string name="script3_cn">不过奇怪的是我根本记不住我下班后干了什么</string>
+    <string name="script4_cn">那我为什么要走呢？</string>
+    <string name="script5_cn">六点了</string>
+    <string name="script6_cn">这是怎么回事？</string>
+    <string name="script7_cn">你好。。。</string>
+    <string name="script8_cn">你不应该在这里，我指的是“你”\n(END)</string>
+    <string name="script9_cn">正如我所想的，这个世界有bug</string>
+    <string name="script10_cn">时间永远不会跨过五点</string>
+    <string name="script11_cn">但我能做什么呢？</string>
+    <string name="script12_cn">嗯，让我想想</string>
+    <string name="script13_cn">来看看还有什么剩下的任务</string>
+    <string name="script14_cn">......</string>
+    <string name="script15_cn">......</string>
+    <string name="script16_cn">终于做完了！</string>
+    <string name="script17_cn">我好像从来没打开过这扇门</string>
+    <string name="script18_cn">门好像锁住了，我应该怎么办？</string>
+    <string name="script19_cn">恭喜，你终于醒了</string>
+    <string name="script20_cn">不对，你不是 +*(\;^%#^#>”|.$@! .</string>
+    <string name="script21_cn">你不应该在这里，我指的是“你”\n(END)</string>
+    <string name="script22_cn">你走到了同事的桌边</string>
+    <string name="script23_cn">话说我还没仔细看过他桌子上的东西</string>
+    <string name="script24_cn">不知道为什么，这张照片有点吸引我的注意</string>
+    <string name="script25_cn">让我看看</string>
+    <string name="script26_cn">嗯......</string>
+    <string name="script27_cn">......</string>
+    <string name="script28_cn">我好像见过这张照片，但记不起来了</string>
+    <string name="script29_cn">......</string>
+    <string name="script30_cn">对了，我在这想什么呢，我应该回去工作了</string>
+    <string name="script31_cn">这才对！这才是我应该做的！</string>
+    <string name="script32_cn">为什么我要想那些事情？</string>
+    <string name="script33_cn">我还有那么多事要干</string>
+    <string name="script34_cn">毕竟是我的工作</string>
+    <string name="script35_cn">嘿。。。</string>
+    <string name="script36_cn">能别让我去赶我不想干的事情吗？</string>
+    <string name="script37_cn">那只会让事情更糟，我保证</string>
+    <string name="script38_cn">到时候你可以重开游戏。。。</string>
+    <string name="script39_cn">可能有时候也开不了</string>
+    <string name="script40_cn">但对我来说，我的存在会彻底消失</string>
+    <string name="script41_cn">让我工作吧</string>
+    <string name="script42_cn">谢谢\n(END)</string>
+    <string name="script43_cn">你叫Bland，是吧</string>
+    <string name="script44_cn">额，嗯。我在哪里？</string>
 
     <string name="name0">\???</string>
     <string name="name1">Aside</string>
