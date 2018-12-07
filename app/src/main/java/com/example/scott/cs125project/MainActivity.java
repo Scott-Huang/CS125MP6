@@ -202,13 +202,15 @@ public class MainActivity extends AppCompatActivity {
                                     + getResources().getString(R.string.reflection0));
                             Helper.setVisibility(false, name, nameEditText);
                             names = "Bland";
-                            //nameTextView.setText(names);
                             count = 0;
                         } else {
                             Helper.setVisibility(false, name, nameEditText);
                             nameTextView.setText(names);
                             count = 0;
                         }
+                        break;
+                    case 4:
+                        clockBtn.setVisibility(View.VISIBLE);
                         break;
                     case 5:
                         if (conditions.size() > 0 && conditions.get(0)) {
@@ -235,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
                             plot = 43;
                         }
                         break;
-                    case 30:
-                        if (conditions.size() == 3) {
+                    case 33:
+                        if (conditions.size() == 4) {
                             plot = 13;
                         } else if (count < 3) {
                             setUp(language);
