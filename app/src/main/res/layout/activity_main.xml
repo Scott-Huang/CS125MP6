@@ -13,9 +13,10 @@
         android:id="@+id/textTextView"
         android:layout_width="526dp"
         android:layout_height="96dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="4dp"
+        android:background="@android:drawable/dialog_holo_light_frame"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -129,4 +130,16 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choiceBtn1" />
+
+    <Button
+        android:id="@+id/clockBtn"
+        android:layout_width="117dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="40dp"
+        android:background="@android:color/transparent"
+        android:text="pretend there\nis a clock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

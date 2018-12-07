@@ -88,27 +88,31 @@
     </string-array>
 
     <string-array name="option0_en">
-        <item>@string/option0_0_en</item>
+        <item></item>
         <item>@string/option0_1_en</item>
         <item>@string/option0_2_en</item>
+        <item>@string/option0_3_en</item>
     </string-array>
 
     <string-array name="option1_en">
-        <item>@string/option1_0_en</item>
+        <item></item>
         <item>@string/option1_1_en</item>
         <item>@string/option1_2_en</item>
+        <item>@string/option1_3_en</item>
     </string-array>
 
     <string-array name="option0_cn">
-        <item>@string/option0_0_cn</item>
+        <item></item>
         <item>@string/option0_1_cn</item>
         <item>@string/option0_2_cn</item>
+        <item>@string/option0_3_cn</item>
     </string-array>
 
     <string-array name="option1_cn">
-        <item>@string/option1_0_cn</item>
+        <item></item>
         <item>@string/option1_1_cn</item>
         <item>@string/option1_2_cn</item>
+        <item>@string/option1_3_cn</item>
     </string-array>
 
     <string name="script0_en">I am an employee of this company.</string>
@@ -153,7 +157,7 @@
     <string name="script39_en">Or you might not, sometimes.</string>
     <string name="script40_en">But, for me, it means the end of my existence.</string>
     <string name="script41_en">Just leave me to work along.</string>
-    <string name="script42_en">Please.</string>
+    <string name="script42_en">Please.\n(END)</string>
     <string name="script43_en">You are Bland, right?</string>
     <string name="script44_en">Yeah. And where am I?</string>
     <string name="script45_en"></string>
@@ -179,20 +183,20 @@
     <string name="name9"></string>
     <string name="name10"></string>
 
-    <string name="option0_0_en">continue to work</string>
-    <string name="option0_1_en">force the door open anyway</string>
-    <string name="option0_2_en">go back to work</string>
+    <string name="option0_1_en">continue to work</string>
+    <string name="option0_2_en">force the door open anyway</string>
+    <string name="option0_3_en">go back to work</string>
 
-    <string name="option1_0_en">look around the building</string>
-    <string name="option1_1_en">try to find the key</string>
-    <string name="option1_2_en">go back to work</string>
+    <string name="option1_1_en">look around the building</string>
+    <string name="option1_2_en">try to find the key</string>
+    <string name="option1_3_en">go back to work</string>
 
-    <string name="option0_0_cn">继续工作</string>
-    <string name="option0_1_cn">强行把门打开</string>
-    <string name="option0_2_cn">返回工作</string>
+    <string name="option0_1_cn">继续工作</string>
+    <string name="option0_2_cn">强行把门打开</string>
+    <string name="option0_3_cn">返回工作</string>
 
-    <string name="option1_0_cn">观察四周环境</string>
-    <string name="option1_1_cn">去找钥匙</string>
-    <string name="option1_2_cn">返回工作</string>
+    <string name="option1_1_cn">观察四周环境</string>
+    <string name="option1_2_cn">去找钥匙</string>
+    <string name="option1_3_cn">返回工作</string>
 
 </resources>

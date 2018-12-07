@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class StartActivity extends AppCompatActivity {
     /** english is 0, chinese is 1. */
     private int langu;
-    private boolean played;
     private final String TAG = "start activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         langu = sharedPref.getInt("language", 0);
 
         TextView language = findViewById(R.id.languageTextView);
-        language.setTextSize(20);
+        final Intent main = new Intent(getApplicationContext(), MainActivity.class);
         if (getIntent().hasExtra("language")) {
             langu = getIntent().getExtras().getInt("language", 0);
         }
@@ -32,11 +31,20 @@ public class StartActivity extends AppCompatActivity {
         } else {
             language.setText("中文");
         }
+        Button continueBtn = findViewById(R.id.continueBtn);
+        if (getSharedPreferences("mySettings", MODE_PRIVATE).getInt("plot", 0) != 0) {
+            Helper.setVisibility(true, continueBtn);
+        }
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(main);
+            }
+        });
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent main = new Intent(getApplicationContext(), MainActivity.class);
                 if (getIntent().hasExtra("language")) {
                     main.putExtra("language", langu);
                     main.putExtra("speed", getIntent().getExtras().getInt("speed"));

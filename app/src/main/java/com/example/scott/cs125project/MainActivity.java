@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Maybe need it later, for image displaying.
-        //Helper helper = new Helper(this);
+        //Need it later for image displaying.
+        //final Helper helper = new Helper(this);
 
         final String[] scripts_en = getResources().getStringArray(R.array.scripts_en);
         final String[] scripts_cn = getResources().getStringArray(R.array.scripts_cn);
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         final Button titleBtn = findViewById(R.id.startBtn1);
         final Button choiceBtn1 = findViewById(R.id.choiceBtn1);
         final Button choiceBtn2 = findViewById(R.id.choiceBtn2);
+        final Button clockBtn = findViewById(R.id.clockBtn);
 
         final ConstraintLayout layout = findViewById(R.id.layout);
 
@@ -65,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView name = findViewById(R.id.nameTextViewDisplay);
 
         final EditText nameEditText = findViewById(R.id.nameEditText);
-
-        final ImageView imageView;
 
         SharedPreferences sharedPref = getSharedPreferences("mySettings", MODE_PRIVATE);
         plot = sharedPref.getInt("plot", 0);
@@ -148,10 +147,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(setting);
             }
         });
+        clockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.addCondition(conditions, true, option);
+                Log.d(TAG, "clock is clicked");
+                con = Helper.transfer(conditions);
+                Helper.setVisibility(false, clockBtn);
+                option++;
+            }
+        });
         choiceBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                conditions.add(true);
+                Helper.addCondition(conditions, true, option);
                 con = Helper.transfer(conditions);
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
@@ -161,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         choiceBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                conditions.add(false);
+                Helper.addCondition(conditions, false, option);
                 con = Helper.transfer(conditions);
                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
                 option++;
@@ -174,37 +183,40 @@ public class MainActivity extends AppCompatActivity {
                 if (textTextView.isRunning()) {
                     return;
                 }
-                if (Helper.checkEnd(conditions, plot)) {
-                    Log.d(TAG, "end");
-                    //end();
-                }
-                if (plot == 1) {
-                    Helper.setVisibility(true, name,nameEditText);
-                } else if (plot == 2) {
-                    names = nameEditText.getText().toString();
-                    if (names.equals("") && count < 5) {
-                        Helper.setVisibility(true, name,nameEditText);
-                        textTextView.setTextAutoTyping(getResources().getString(R.string.require_name)
-                                + Helper.createExc(count));
-                        nameTextView.setText(names);
-                        plot = 1;
-                        count++;
-                        return;
-                    } else if (names.equals("")) {
-                        textTextView.setTextAutoTyping(scripts_en[plot]
-                                + getResources().getString(R.string.reflection0));
-                        Helper.setVisibility(false, name, nameEditText);
-                        names = "Bland";
-                        nameTextView.setText(names);
-                        count = 0;
-                        return;
-                    } else {
-                        Helper.setVisibility(false, name, nameEditText);
-                        nameTextView.setText(names);
-                        count = 0;
-                    }
-                }
+                end();
                 switch (plot) {
+                    case 1:
+                        Helper.setVisibility(true, name,nameEditText);
+                        break;
+                    case 2:
+                        names = nameEditText.getText().toString();
+                        if (names.equals("") && count < 5) {
+                            Helper.setVisibility(true, name,nameEditText);
+                            textTextView.setTextAutoTyping(getResources().getString(R.string.require_name)
+                                    + Helper.createExc(count));
+                            nameTextView.setText(names);
+                            plot = 1;
+                            count++;
+                            return;
+                        } else if (names.equals("")) {
+                            textTextView.setTextAutoTyping(scripts_en[plot]
+                                    + getResources().getString(R.string.reflection0));
+                            Helper.setVisibility(false, name, nameEditText);
+                            names = "Bland";
+                            nameTextView.setText(names);
+                            count = 0;
+                            return;
+                        } else {
+                            Helper.setVisibility(false, name, nameEditText);
+                            nameTextView.setText(names);
+                            count = 0;
+                        }
+                        break;
+                    case 5:
+                        if (conditions.size() > 0 && conditions.get(0)) {
+                            plot = 9;
+                        }
+                        break;
                     case 13:
                         if (conditions.size() > 0 && !conditions.get(0)) {
                             plot = 17;
@@ -240,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                 }
+                //helper.setImage(layout, plot);
                 setUp(language);
                 plot++;
             }
@@ -258,8 +271,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             void end() {
-                plot = 0;
-                startActivity(title);
+                if (Helper.checkEnd(conditions, plot)) {
+                    plot = 0;
+                    Log.d(TAG, "end");
+                    startActivity(title);
+                }
             }
         });
     }
