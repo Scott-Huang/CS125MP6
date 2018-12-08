@@ -2,8 +2,11 @@ package com.example.scott.cs125project;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 public class StartActivity extends AppCompatActivity {
     /** english is 0, chinese is 1. */
     private int langu;
+    private boolean real;
     private final String TAG = "start activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +24,11 @@ public class StartActivity extends AppCompatActivity {
         SharedPreferences sharedPref =
                 getSharedPreferences("mySettings", MODE_PRIVATE);
         langu = sharedPref.getInt("language", 0);
+        final int plot = sharedPref.getInt("plot", 0);
 
-        TextView language = findViewById(R.id.languageTextView);
+        final ConstraintLayout startLayout = findViewById(R.id.startLayout);
+
+        final TextView language = findViewById(R.id.languageTextView);
         final Intent main = new Intent(getApplicationContext(), MainActivity.class);
         if (getIntent().hasExtra("language")) {
             langu = getIntent().getExtras().getInt("language", 0);
@@ -32,12 +39,13 @@ public class StartActivity extends AppCompatActivity {
             language.setText("中文");
         }
         Button continueBtn = findViewById(R.id.continueBtn);
-        if (getSharedPreferences("mySettings", MODE_PRIVATE).getInt("plot", 0) != 0) {
+        if (plot != 0) {
             Helper.setVisibility(true, continueBtn);
         }
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                main.putExtra("real", true);
                 startActivity(main);
             }
         });
@@ -51,10 +59,18 @@ public class StartActivity extends AppCompatActivity {
                     main.putExtra("textSize", getIntent()
                             .getExtras().getInt("textSize"));
                 }
-                main.putExtra("plot", 0);
-                main.putExtra("option", 0);
-                main.putExtra("conditions", new boolean[0]);
-                main.putExtra("name", "Unknown");
+                if (plot < 58) {
+                    main.putExtra("plot", 0);
+                    main.putExtra("option", 0);
+                    main.putExtra("conditions", new boolean[0]);
+                    main.putExtra("name", "Unknown");
+                } else {
+                    main.putExtra("plot", 59);
+                    main.putExtra("option", 5);
+                    main.putExtra("conditions", new boolean[]
+                            {true, false, false, false});
+                    main.putExtra("name", "Bland");
+                }
                 startActivity(main);
             }
         });
@@ -81,6 +97,13 @@ public class StartActivity extends AppCompatActivity {
 
             }
         });
+
+        if (plot > 58) {
+            Log.d(TAG, "start background changed");
+            startLayout.setBackground(getResources().getDrawable(R.drawable.start_background2));
+            Helper.setAllColor(Color.RED, language, continueBtn,
+                    startBtn, loadBtn, settingBtn, creditBtn);
+        }
     }
 
     @Override

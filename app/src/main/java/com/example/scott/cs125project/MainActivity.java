@@ -243,14 +243,20 @@ public class MainActivity extends AppCompatActivity {
                                 return;
                             } else {
                                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
-                                conditions.add(option, false);
+                                Helper.addCondition(conditions, false, option);
                                 plot++;
                             }
                         }
                         break;
                     case 35:
                         if (conditions.size() == 4) {
+                            Helper.addCondition(conditions, true, option);
                             plot = 13;
+                        }
+                        break;
+                    case 59:
+                        if (!getIntent().hasExtra("real")) {
+                            startActivity(title);
                         }
                         break;
                 }
