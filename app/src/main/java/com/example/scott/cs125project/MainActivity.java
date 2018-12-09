@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private int count = 0;
     private boolean[] con;
     private String names = "Unknown";
-    private final String TAG = "CS125Project";
+    private final String TAG = "main activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,21 +236,23 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 30:
                         if (conditions.size() != 4) {
-                            if (count < 3) {
+                            if (count < 5) {
                                 setUp(language);
                                 layout.setClickable(true);
                                 count++;
                                 return;
                             } else {
                                 Helper.setVisibility(false, choiceBtn1, choiceBtn2);
-                                Helper.addCondition(conditions, false, option);
-                                plot++;
+                                Helper.addCondition(conditions, false, 3);
+                                plot = 35;
                             }
+                        } else {
+                            Helper.addCondition(conditions, true, 3);
                         }
                         break;
                     case 35:
-                        if (conditions.size() == 4) {
-                            Helper.addCondition(conditions, true, option);
+                        if (!conditions.get(3)) {
+                            Helper.addCondition(conditions, true, 3);
                             plot = 13;
                         }
                         break;
