@@ -39,7 +39,9 @@ public class StartActivity extends AppCompatActivity {
         }
         Button continueBtn = findViewById(R.id.continueBtn);
         if (plot != 0) {
-            Helper.setVisibility(true, continueBtn);
+            continueBtn.setVisibility(View.VISIBLE);
+        } else {
+            continueBtn.setVisibility(View.INVISIBLE);
         }
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
