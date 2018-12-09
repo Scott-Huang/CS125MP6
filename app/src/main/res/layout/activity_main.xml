@@ -17,6 +17,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="4dp"
         android:background="@android:drawable/dialog_holo_light_frame"
+        android:text="(Long press the screen to hide the text)"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,6 +73,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:background="@android:drawable/dialog_holo_light_frame"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textTextView"
         app:layout_constraintStart_toStartOf="parent" />
@@ -134,13 +136,12 @@
 
     <Button
         android:id="@+id/clockBtn"
-        android:layout_width="117dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginLeft="276dp"
+        android:layout_marginTop="132dp"
         android:background="@android:color/transparent"
-        android:text="pretend there\nis a clock"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

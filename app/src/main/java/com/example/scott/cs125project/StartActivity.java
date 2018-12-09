@@ -14,7 +14,6 @@ import android.widget.TextView;
 public class StartActivity extends AppCompatActivity {
     /** english is 0, chinese is 1. */
     private int langu;
-    private boolean real;
     private final String TAG = "start activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +93,8 @@ public class StartActivity extends AppCompatActivity {
         creditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent credit = new Intent(getApplicationContext(), CreditActivity.class);
+                startActivity(credit);
             }
         });
 

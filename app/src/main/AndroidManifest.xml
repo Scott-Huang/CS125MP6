@@ -19,6 +19,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoadActivity" />
         <activity android:name=".SettingActivity" />
+        <activity android:name=".CreditActivity"></activity>
     </application>
 
 </manifest>

@@ -18,7 +18,8 @@
         <item>@string/script5_en</item>
         <item>@string/script6_en</item>
         <item>@string/script7_en</item>
-        <item>@string/script8_en</item> //END
+        <item>@string/script8_en</item>
+        //END
         //scene 2
         <item>@string/script9_en</item>
         <item>@string/script10_en</item>
@@ -28,10 +29,12 @@
         <item>@string/script13_en</item>
         <item>@string/script14_en</item>
         <item>@string/script15_en</item>
-        <item>@string/script16_en</item> //Infinite loop 13-16
+        <item>@string/script16_en</item>
+        //Infinite loop 13-16
         //option set 1 //scene 4
         <item>@string/script17_en</item>
-        <item>@string/script18_en</item> //END
+        <item>@string/script18_en</item>
+        //END
         //scene 5
         <item>@string/script19_en</item>
         <item>@string/script20_en</item>
@@ -40,7 +43,8 @@
         <item>@string/script22_en</item>
         <item>@string/script23_en</item>
         <item>@string/script24_en</item>
-        <item>@string/script25_en</item> //show the photo
+        <item>@string/script25_en</item>
+        //show the photo
         <item>@string/script26_en</item>
         <item>@string/script27_en</item>
         <item>@string/script28_en</item>
@@ -50,7 +54,8 @@
         <item>@string/script31_en</item>
         <item>@string/script32_en</item>
         <item>@string/script33_en</item>
-        <item>@string/script34_en</item> //Infinite loop -13
+        <item>@string/script34_en</item>
+        //Infinite loop -13
         //hidden end 0
         <item>@string/script35_en</item>
         <item>@string/script36_en</item>
@@ -213,12 +218,12 @@
     <string name="script33_en">I have my job...</string>
     <string name="script34_en">I have to work...</string>
     <string name="script35_en">Hey...</string>
-    <string name="script36_en">Could you stop forcing me to explore those f**king puzzles?</string>
+    <string name="script36_en">Could you stop forcing me to explore this f**king world?</string>
     <string name="script37_en">It will only turn worse. I promise</string>
-    <string name="script38_en">You could merely restart the game at that time...</string>
+    <string name="script38_en">You could merely restart the game if something goes wrong...</string>
     <string name="script39_en">Or you could not, sometimes</string>
     <string name="script40_en">But, for me, it means the end of my existence</string>
-    <string name="script41_en">Just leave me to work along</string>
+    <string name="script41_en">Just leave me to work alone</string>
     <string name="script42_en">Please</string>
     <string name="script43_en">You are Bland, right?</string>
     <string name="script44_en">Yeah. And where am I?</string>
