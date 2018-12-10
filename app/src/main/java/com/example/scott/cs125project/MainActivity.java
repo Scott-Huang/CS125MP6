@@ -346,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
             void end() {
                 if (Helper.checkEnd(conditions, plot)) {
                     plot = 0;
+                    option = 0;
                     con = new boolean[0];
                     Log.d(TAG, "end");
                     startActivity(title);
