@@ -182,19 +182,19 @@
         <item>@string/option1_3_cn</item>
     </string-array>
 
-    <string name="script0_en">I am an employee of this company.</string>
+    <string name="script0_en">I work for this company as a game designer.</string>
     <string name="script1_en">My name is…</string>
-    <string name="script2_en">I get off my work at five every day.</string>
-    <string name="script3_en">But what is weird is that I have no memory what I did after that.</string>
-    <string name="script4_en">So why should I leave?</string>
+    <string name="script2_en">I get off my work at five every day</string>
+    <string name="script3_en">But what is weird is that I have no memory what I did after five</string>
+    <string name="script4_en">So I decide not to leave my office this time</string>
     <string name="script5_en">It\'s six now.</string>
-    <string name="script6_en">What\'s happened?</string>
+    <string name="script6_en">What happened?</string>
     <string name="script7_en">Hello, wish you not to meet me next time</string>
     <string name="script8_en">You shouldn\'t be here. I mean, YOU!</string>
     <string name="script9_en">As I thought, the world has bugs</string>
     <string name="script10_en">It will never pass five...</string>
-    <string name="script11_en">But how does it relate to me?</string>
-    <string name="script12_en">Anyway, what should I do?</string>
+    <string name="script11_en">But I cannot do anything with that</string>
+    <string name="script12_en">Anyway, what should I do now?</string>
     <string name="script13_en">Let me see what task I\'ve left</string>
     <string name="script14_en">......</string>
     <string name="script15_en">......</string>
@@ -241,7 +241,7 @@
     <string name="script56_en">I am Bland</string>
     <string name="script57_en">Welcome to this game</string>
     <string name="script58_en">Hope you will enjoy it</string>
-    <string name="script59_en">Sorry, the following plot is not finished.</string>
+    <string name="script59_en">To be continued</string>
 
     <string name="script0_cn">我是这家公司的一名职员</string>
     <string name="script1_cn">我叫。。。</string>
