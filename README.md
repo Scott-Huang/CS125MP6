@@ -1,2 +1,4 @@
-# CS125MP6
-CS125 Final MP
+# Visual-Novel
+Made this just for interests.
+
+As its title, it's a simply visual-novel game. 
